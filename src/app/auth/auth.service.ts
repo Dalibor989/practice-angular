@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {BehaviorSubject, catchError, tap, throwError} from "rxjs";
 import {User} from "./user.model";
+import {stringify} from "@angular/compiler/src/util";
 
 export interface AuthResponseData {
   idToken: string,
@@ -67,7 +68,8 @@ export class AuthService {
 
   logout() {
     this.user.next(null);
-    this.router.navigate(['/'])
+    this.router.navigate(['/']);
+    localStorage.removeItem('userData');
   }
 
   private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {
@@ -87,7 +89,7 @@ export class AuthService {
   private handleError(errorRes: HttpErrorResponse) {
     let errorMessage = 'An unknown error occurred!';
     if(!errorRes.error || !errorRes.error.error) {
-      return throwError(errorMessage)
+      return throwError(() => errorMessage)
     }
     switch (errorRes.error.error.message) {
       case 'EMAIL_EXISTS':
@@ -100,6 +102,6 @@ export class AuthService {
         errorMessage = 'Incorrect password.'
     }
 
-    return throwError(errorMessage);
+    return throwError(() => errorMessage);
   }
 }

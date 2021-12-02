@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {GuidebooksComponent} from "./base-component/guidebooks/guidebooks.component";
+import {AuthComponent} from "./auth/auth.component";
 import {BaseComponentComponent} from "./base-component/base-component.component";
-import {AuthComponent} from "./base-component/auth/auth.component";
-import {AuthGuard} from "./base-component/auth/auth.guard";
+import {GuidebooksComponent} from "./base-component/guidebooks/guidebooks.component";
+import {AuthGuard} from "./auth/auth.guard";
+
 
 const routes: Routes = [
   { path: '', component: AuthComponent},
