@@ -3,15 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthComponent } from './base-component/auth/auth.component';
+import { AuthComponent } from './auth/auth.component';
 import {FormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { HeaderComponent } from './base-component/header/header.component';
 import { BaseComponentComponent } from './base-component/base-component.component';
-import {AuthInterceptorService} from "./base-component/auth/auth-interceptor.service";
+import {AuthInterceptorService} from "./auth/auth-interceptor.service";
 import { GuidebooksComponent } from './base-component/guidebooks/guidebooks.component';
 import { GuidebookComponent } from './base-component/guidebooks/guidebook/guidebook.component';
 import {GuidebookService} from "./base-component/guidebooks/guidebook.service";
+import {DropdownDirective} from "./shared/dropdown.directive";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {GuidebookService} from "./base-component/guidebooks/guidebook.service";
     HeaderComponent,
     BaseComponentComponent,
     GuidebooksComponent,
-    GuidebookComponent
+    GuidebookComponent,
+    DropdownDirective
   ],
     imports: [
         BrowserModule,

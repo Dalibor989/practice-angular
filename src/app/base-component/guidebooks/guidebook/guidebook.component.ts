@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Guidebook} from "../guidebook.model";
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {GuidebookService} from "../guidebook.service";
 
 @Component({
   selector: 'app-guidebook',
@@ -9,10 +7,23 @@ import {GuidebookService} from "../guidebook.service";
   styleUrls: ['./guidebook.component.css']
 })
 export class GuidebookComponent implements OnInit {
+  @Input() guidebook?: Guidebook;
 
-  constructor(private guidebookService: GuidebookService , private router: Router, private route: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit(): void {
+
+  }
+
+  onDelete() {
+
+  }
+
+  onShare() {
+
+  }
+
+  onEdit() {
 
   }
 
