@@ -14,6 +14,7 @@ export class GuidebooksComponent implements OnInit {
 
   ngOnInit(): void {
     this.guidebooks = this.guidebookService.getGuidebook();
+    console.log(this.guidebooks)
   }
 
 }

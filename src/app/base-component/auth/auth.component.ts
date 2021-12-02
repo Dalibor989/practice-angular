@@ -39,7 +39,7 @@ export class AuthComponent implements OnInit {
     }
 
     authObs.subscribe(() => {
-      this.router.navigate(['guidebooks'])
+      this.router.navigate(['base-component'])
     }, errorMessage => {
       this.error = errorMessage;
     })
