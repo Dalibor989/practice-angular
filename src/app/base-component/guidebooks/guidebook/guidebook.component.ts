@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Guidebook} from "../guidebook.model";
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {GuidebookService} from "../guidebook.service";
 
 @Component({
   selector: 'app-guidebook',
@@ -7,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuidebookComponent implements OnInit {
 
-  constructor() { }
+  constructor(private guidebookService: GuidebookService , private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
   }
 
 }

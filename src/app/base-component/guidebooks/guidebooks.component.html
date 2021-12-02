@@ -1,1 +1,8 @@
-<p>guidebooks works!</p>
+<header>
+  <app-header></app-header>
+</header>
+<div class="row">
+  <app-guidebook *ngFor="let guidebook of guidebooks">
+    {{ guidebook.title }}
+  </app-guidebook>
+</div>
