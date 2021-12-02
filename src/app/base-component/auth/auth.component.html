@@ -1,34 +1,54 @@
-<div class="row">
-  <div class="col-xs-12">
-    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
-      <div class="form-group" *ngIf="isSignup">
-        <label for="fullName">Full Name</label>
-        <input
-          type="text"
-          id="fullName"
-          class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          class="form-control">
-      </div>
-      <button class="btn btn-primary">
-        {{ !isSignup ? 'Sign in' : 'Sign up'}}
-      </button>
-    </form>
-    <div class="col-xs-12">
-      <div>Already have an account?</div>
-      <a (click)="onSwitch()">{{ isSignup ? 'Sign in' : 'Sign up'}}</a>
+<div class="container" style="background-color: lightgrey; height: 100vh; width: 100vw; ">
+    <div class="col-md-6" style="text-align: left; position: center">
+      <h1>GUIDE ME</h1>
+      <hr>
+      <p>
+        Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit.
+        Accusantium adipisci at consectetur cum deleniti distinctio ipsa ipsum laboriosam modi molestias mollitia perspiciatis,
+        quas quasi quibusdam quisquam, repellat velit vero voluptatem.
+      </p>
     </div>
-  </div>
+    <div class="col-md-6" style="padding: 10px; position: center; background-color: white">
+      <div class="alert alert-danger" *ngIf="error">
+        <p>{{ error }}</p>
+      </div>
+      <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+        <div class="form-group" *ngIf="isSignup">
+          <label for="fullName">Full Name</label>
+          <input
+            type="text"
+            id="fullName"
+            class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            ngModel
+            class="form-control"
+            name="email"
+            email
+            required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            ngModel
+            class="form-control"
+            name="password"
+            required>
+        </div>
+        <button class="btn btn-primary" [disabled]="!authForm.valid">
+          {{ !isSignup ? 'Sign in' : 'Sign up'}}
+        </button>
+      </form>
+      <div class="col-xs-12">
+        <div>Already have an account?</div>
+        <a (click)="onSwitch()">{{ isSignup ? 'Sign in' : 'Sign up'}}</a>
+      </div>
+    </div>
 </div>

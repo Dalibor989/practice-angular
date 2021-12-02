@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "./auth.service";
+import {AuthResponseData, AuthService} from "./auth.service";
 import {NgForm} from "@angular/forms";
+import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-auth',
@@ -9,8 +11,9 @@ import {NgForm} from "@angular/forms";
 })
 export class AuthComponent implements OnInit {
   isSignup = true;
+  error = null;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -20,11 +23,26 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    if(this.isSignup) {
-      this.authService.signUp()
-    } else {
-      this.authService.signIn()
+    if(!form.valid) {
+      return;
     }
+
+    const email = form.value.email;
+    const password = form.value.password;
+
+    let authObs = new Observable<AuthResponseData>();
+
+    if(this.isSignup) {
+      authObs = this.authService.signUp(email, password)
+    } else {
+      authObs = this.authService.signIn(email, password)
+    }
+
+    authObs.subscribe(() => {
+      this.router.navigate(['guidebooks'])
+    }, errorMessage => {
+      this.error = errorMessage;
+    })
   }
 
 }

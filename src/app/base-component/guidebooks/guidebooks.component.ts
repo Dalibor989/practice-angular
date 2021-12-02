@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Guidebook} from "./guidebook.model";
+import {GuidebookService} from "./guidebook.service";
 
 @Component({
   selector: 'app-guidebooks',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./guidebooks.component.css']
 })
 export class GuidebooksComponent implements OnInit {
+  guidebooks?: Guidebook[];
 
-  constructor() { }
+  constructor(private guidebookService: GuidebookService) { }
 
   ngOnInit(): void {
+    this.guidebooks = this.guidebookService.getGuidebook();
   }
 
 }
