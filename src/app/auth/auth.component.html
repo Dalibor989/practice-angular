@@ -9,20 +9,20 @@
         quas quasi quibusdam quisquam, repellat velit vero voluptatem.
       </p>
     </div>
-    <div class="col-md-6" style="padding: 10px; position: center; background-color: white">
+    <div class="col-md-6" style="text-align: center; padding: 15px; position: center; background-color: white">
       <div class="alert alert-danger" *ngIf="error">
         <p>{{ error }}</p>
       </div>
       <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+        <h2>Sign Up</h2>
         <div class="form-group" *ngIf="isSignup">
-          <label for="fullName">Full Name</label>
           <input
             type="text"
             id="fullName"
-            class="form-control">
+            class="form-control"
+            placeholder="Full name">
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
           <input
             type="email"
             id="email"
@@ -30,19 +30,20 @@
             class="form-control"
             name="email"
             email
-            required>
+            required
+            placeholder="Email">
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
           <input
             type="password"
             id="password"
             ngModel
             class="form-control"
             name="password"
-            required>
+            required
+            placeholder="Password">
         </div>
-        <button class="btn btn-primary" [disabled]="!authForm.valid">
+        <button class="btn btn-primary btn-block" [disabled]="!authForm.valid">
           {{ !isSignup ? 'Sign in' : 'Sign up'}}
         </button>
       </form>

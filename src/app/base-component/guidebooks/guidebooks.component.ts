@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Guidebook} from "./guidebook.model";
 import {GuidebookService} from "./guidebook.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-guidebooks',
@@ -10,11 +11,13 @@ import {GuidebookService} from "./guidebook.service";
 export class GuidebooksComponent implements OnInit {
   guidebooks?: Guidebook[];
 
-  constructor(private guidebookService: GuidebookService) { }
+  constructor(private guidebookService: GuidebookService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.guidebooks = this.guidebookService.getGuidebook();
-    console.log(this.guidebooks)
   }
 
+  redirect() {
+    this.router.navigate(['../guidebook-details'], {relativeTo: this.route})
+  }
 }

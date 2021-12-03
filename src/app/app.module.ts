@@ -13,6 +13,7 @@ import { GuidebooksComponent } from './base-component/guidebooks/guidebooks.comp
 import { GuidebookComponent } from './base-component/guidebooks/guidebook/guidebook.component';
 import {GuidebookService} from "./base-component/guidebooks/guidebook.service";
 import {DropdownDirective} from "./shared/dropdown.directive";
+import { GuidebookDetailComponent } from './base-component/guidebooks/guidebook-detail/guidebook-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {DropdownDirective} from "./shared/dropdown.directive";
     BaseComponentComponent,
     GuidebooksComponent,
     GuidebookComponent,
-    DropdownDirective
+    DropdownDirective,
+    GuidebookDetailComponent
   ],
     imports: [
         BrowserModule,
